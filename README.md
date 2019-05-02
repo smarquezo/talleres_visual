@@ -20,8 +20,8 @@ _Alternativas para video en Linux y gstreamer >=1_
 
 Distribuciones recientes de Linux que emplean gstreamer >=1, requieren alguna de las siguientes librerías de video:
 
-1. [Beta oficial](https://github.com/processing/processing-video/releases)
-2. [Gohai port](https://github.com/gohai/processing-video/releases/tag/v1.0.2)
+1. [Beta oficial](https://github.com/processing/processing-video/releases).
+2. [Gohai port](https://github.com/gohai/processing-video/releases/tag/v1.0.2).
 
 Descompriman el archivo `*.zip` en la caperta de `libraries` de su sketchbook (e.g., `$HOME/sketchbook/libraries`) para instalarla y prueben cual de las dos les funciona.
 
