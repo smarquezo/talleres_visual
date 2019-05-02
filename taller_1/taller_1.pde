@@ -62,16 +62,16 @@ int[] hist;
 void setup() {
   size(1200, 500);
   background(back);
-  PFont f = createFont("Comic sans", 30);
+  PFont f = createFont("Arial", 30);
   
   
   //load an image
-  img = loadImage("assets/images/1.jpeg");  
+  img = loadImage("assets/images/2.jpg");  
   img.loadPixels();
   loadPixels();
   
   //load a video
-  video = new Movie(this, "4.mp4");
+  video = new Movie(this, "5.mp4");
   video.loop();
 
   //creating rectangles for buttons
@@ -173,6 +173,8 @@ void draw() {
   convolution(pos_i_x + i_width * 3+ padding * 3, initial_h, matrix_2);
   
   updatePixels();
+
+  println(frameCount);
   
   }
   
@@ -294,4 +296,3 @@ void mousePressed() {
   
   
 }
-
