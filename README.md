@@ -16,7 +16,7 @@ Implementar las siguientes operaciones de análisis para imágenes/video:
 
 Emplear dos [canvas](https://processing.org/reference/PGraphics.html), uno para desplegar la imagen/video original y el otro para el resultado del análisis.
 
-_Alternativas para video en Linux y gstreamer >=1_
+### Alternativas para video en Linux y gstreamer >=1
 
 Distribuciones recientes de Linux que emplean gstreamer >=1, requieren alguna de las siguientes librerías de video:
 
