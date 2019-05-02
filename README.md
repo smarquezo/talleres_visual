@@ -16,6 +16,15 @@ Implementar las siguientes operaciones de análisis para imágenes/video:
 
 Emplear dos [canvas](https://processing.org/reference/PGraphics.html), uno para desplegar la imagen/video original y el otro para el resultado del análisis.
 
+_Alternativas para video en Linux y gstreamer >=1_
+
+Distribuciones recientes de Linux que emplean gstreamer >=1, requieren alguna de las siguientes librerías de video:
+
+1. [Beta oficial](https://github.com/processing/processing-video/releases)
+2. [Gohai port](https://github.com/gohai/processing-video/releases/tag/v1.0.2)
+
+Descompriman el archivo `*.zip` en la caperta de `libraries` de su sketchbook (e.g., `$HOME/sketchbook/libraries`) para instalarla y prueben cual de las dos les funciona.
+
 ## Integrantes
 
 Complete la tabla:
@@ -30,5 +39,5 @@ Complete la tabla:
 
 ## Entrega
 
-* Hacer [fork](https://help.github.com/articles/fork-a-repo/) de la plantilla. Plazo: 28/4/19 a las 24h.
+* Hacer [fork](https://help.github.com/articles/fork-a-repo/) de la plantilla. Plazo: ~~28/4/19~~ 5/5/19 a las 24h.
 * (todos los integrantes) Presentar el trabajo presencialmente en la siguiente sesión de taller.
