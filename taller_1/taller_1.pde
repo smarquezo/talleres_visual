@@ -32,6 +32,7 @@ int i_width= 250;
 int i_heigth = 250;
 int pos_i_x = 90, pos_i_y = 50;
 int padding = 10;
+int fr= 60;
 
 int canvas_w = 1200, canvas_h = 650;
 
@@ -176,7 +177,12 @@ void draw() {
   
   updatePixels();
 
-  // println(frameRate);
+
+  String frtxt = "Efficiency "+ frameRate/fr*100 + "%";
+  text(frtxt, 90, 450);
+  fill(back);
+  rect(90, 450, 200, 50);
+  delay(100);
   
   }
   
