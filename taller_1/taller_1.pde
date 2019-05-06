@@ -37,7 +37,7 @@ int canvas_w = 1200, canvas_h = 650;
 
 color back = color(102, 102, 255);
 
-boolean isVideo ;
+boolean isVideo = false;
 
 int init_histogram;
 int finish_histogram;
@@ -77,7 +77,11 @@ void setup() {
   text(image_label, 470, 390);
   text(video_label, 480 + button_w + padding, 390);
   
+  
   //Creating scrollbars, putting on position of luma image
+  int aux = pos_i_x + i_width + padding;
+   bar1 = new HScrollbar(pos_i_x + i_width + padding, pos_i_y + i_heigth + 10 ,i_width, 15 , 15 );
+   bar2 = new HScrollbar(pos_i_x + i_width + padding, pos_i_y + i_heigth + 30 ,i_width, 15 , 15 );
   
 }
 
@@ -95,6 +99,11 @@ void draw() {
   int initial_h = pos_i_y;
   if(!isVideo)
   {
+
+
+ 
+ loadPixels();
+
   image(img, pos_i_x, pos_i_y,i_width, i_heigth);
   image(img, pos_i_x + i_width + padding, pos_i_y,i_width, i_heigth);
   image(img, initial_w_2 , pos_i_y,i_width, i_heigth);
@@ -102,19 +111,17 @@ void draw() {
   
   
   
-  luma(initial_w, initial_h);
-  convolution(initial_w_2, initial_h, matrix_3);
+  // luma(initial_w, initial_h);
 
+  convolution(initial_w_2, initial_h, matrix_3);
   updatePixels();
   convolution(initial_w_3, initial_h, matrix_2);
-  
   updatePixels();
-  hist = histogram(initial_w, initial_h);
 
-  
 
-  
-  
+
+
+  hist = histo_segmentation(initial_w, initial_h);
    stroke(255);
   for(int x = initial_w; x < i_width + initial_w; x += 2){
    int x1 = int(map(x, initial_w, i_width + initial_w, 0, 255));
@@ -146,6 +153,10 @@ void draw() {
     
   }
 
+  bar1.update();
+  bar2.update();
+  bar1.display();
+  bar2.display();
   loadPixels();
   
   }
@@ -165,7 +176,7 @@ void draw() {
   
   updatePixels();
 
-  println(frameCount);
+  // println(frameRate);
   
   }
   
@@ -190,6 +201,55 @@ void luma(int initial_w, int initial_h){
   }
   updatePixels();
   
+}
+
+int[] histo_segmentation(int initial_w, int initial_h){
+
+  loadPixels();
+
+  float bar_pos_1 = bar1.getPos()- i_width/2;
+  
+  float bar_pos_2 = bar2.getPos()- i_width/2; 
+  float min= map(bar_pos_1, pos_i_x + i_width + padding, pos_i_x + i_width + padding + i_width, 0, 255); 
+  float max= map(bar_pos_2, pos_i_x + i_width + padding, pos_i_x + i_width + padding + i_width, 0, 255); 
+  // println("min: "+min);
+  // println("max: "+max);
+  int[] hist = new int[256];
+
+  for(int wi = initial_w; wi < i_width + initial_w; wi++) {
+    
+   for(int hi = initial_h; hi < i_heigth + initial_h; hi++){
+     
+     color rgb = get(wi, hi);
+    //  println("rgb: "+rgb);
+    //  color greyscale = color(red(rgb) * 0.2126 + green(rgb) * 0.7152 + blue(rgb) * 0.0722);
+
+    float r = red (rgb); 
+    float g = green(rgb);
+    float b = blue(rgb); 
+
+    float greyscale = r * 0.2126 + g * 0.7152 + b * 0.0722;
+
+    r = constrain(greyscale, 0, 255);      
+    g = constrain(greyscale, 0, 255);      
+    b = constrain(greyscale, 0, 255);  
+
+    color niu_color = color(r, g, b);  
+    // println("niu_color: "+niu_color);
+    if(greyscale>min && greyscale<max){
+        pixels[hi* canvas_w + wi] = niu_color;
+      }else{
+        pixels[hi* canvas_w + wi] = 0; 
+      }
+
+      int hist_value = (int) greyscale;
+     hist[hist_value] += 1;
+     
+   }
+     
+  }
+  updatePixels();
+  return hist;
 }
 
 int[] histogram(int initial_w, int initial_h){
