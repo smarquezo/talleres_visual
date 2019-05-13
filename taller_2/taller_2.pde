@@ -21,7 +21,7 @@ void draw(){
       text("Camilo Mosquera", 170, 300);
       text("Santiago Marquez", 160, 350);
       break;
-    case 2:      
+    case 2:
       ScintillatingGrid();
       break;
     case 3:
@@ -51,10 +51,10 @@ void keyPressed() {
         actual+=1;
       } else if (keyCode == LEFT) {
         actual-=1;
-      } 
+      }
     }
   }if (actual ==8) {
-    actual=2;    
+    actual=2;
   }else if (actual ==0){
     actual=7;
   }
@@ -67,7 +67,7 @@ void ScintillatingGrid(){
     noStroke();
     for(int i = 20; i < 600; i += 40){
             rect(i,0,7,600);
-    }    
+    }
     for(int i = 20; i < 600; i += 40){
             rect(0,i,600,07);
     }
@@ -75,7 +75,7 @@ void ScintillatingGrid(){
         for(int k = 20; k < 600; k += 40){
             fill(255);
             ellipse(i + 3,k + 3, 12,12);
-        }        
+        }
     }
 }
 
@@ -155,6 +155,50 @@ void SteppingFeet() {
 //  rect(xSquare, 400, 130, 70);
 //}
 
+//Munker/////////////////////////////////////////////////////////////
+
+int upper = 10;
+int y = 0;
+int lower = 0;
+
+boolean position=false;
+
+void Munker() {
+  background(255,255,0);
+  int step = 10;
+  if (y == lower) {
+    position = false;
+  }
+  if (y == upper) {
+    position = true;
+  }
+
+  if (!position) {
+    y++;
+  }
+  else {
+    y--;
+  }
+
+  strokeWeight(0);
+  stroke(0, 0, 0);
+  fill(0, 0, 255);
+  for (int i = 0; i <= height; i = i + step) {
+    rect(0, i*2 + y, width, step);
+  }
+
+  //Squares
+  rectMode(CENTER);
+  fill(0, 255, 0);
+  noStroke();
+  for (int i = 0; i <= height; i = i + step) {
+    rect(180, i * 2, 120, 10);
+  }
+  noStroke();
+  for (int i = 0; i <= height; i = i + step) {
+    rect(420, i * 2, 120, 10);
+  }
+}
 
 //Hering Illusion/////////////////////////////////////////////////////////////////
 
@@ -198,9 +242,9 @@ void sigma_motion(){
   for(int x=0;x<a;++x){
     background(0);
   }
-  
+
   for(int x=0;x<800/25;++x){
-    int theme = ( (state%2 == 0 && x%2 == 0) || ( state%2 != 0 && x%2 == 1) ) ? 255 : 0; 
+    int theme = ( (state%2 == 0 && x%2 == 0) || ( state%2 != 0 && x%2 == 1) ) ? 255 : 0;
     fill(theme);
     stroke(theme);
     rect(25*x,0,100,800);
@@ -243,7 +287,7 @@ void benhamIllusion(){
 
 
 
- 
+
   r = r + 8;
 
 }
