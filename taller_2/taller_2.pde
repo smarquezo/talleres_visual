@@ -160,7 +160,7 @@ void SteppingFeet() {
 
 //Munker/////////////////////////////////////////////////////////////
 
-int upper = 10;
+int upper = 60;
 int y = 0;
 int lower = 0;
 
