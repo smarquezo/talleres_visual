@@ -162,7 +162,7 @@ void SteppingFeet() {
 
 int upper = 60;
 int y = 0;
-int lower = 0;
+int lower = -50;
 
 boolean position=false;
 
