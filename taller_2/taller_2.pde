@@ -1,4 +1,4 @@
-int illusions = 7;
+int illusions = 8;
 int actual = 1;
 int r = 0;
 
@@ -39,6 +39,9 @@ void draw(){
     case 7:
       benhamIllusion();
       break;
+    case 8:
+      Munker();
+      break;
   }
   popStyle();
 }
@@ -53,10 +56,10 @@ void keyPressed() {
         actual-=1;
       }
     }
-  }if (actual ==8) {
+  }if (actual ==9) {
     actual=2;
   }else if (actual ==0){
-    actual=7;
+    actual=8;
   }
 }
 
