@@ -195,7 +195,7 @@ void Munker() {
   fill(0, 255, 0);
   noStroke();
   for (int i = 0; i <= height; i = i + step) {
-    rect(180, i * 2, 120, 10);
+    rect(180, (i * 2) - step, 120, 10);
   }
   noStroke();
   for (int i = 0; i <= height; i = i + step) {
