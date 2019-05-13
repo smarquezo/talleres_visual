@@ -2,6 +2,7 @@ import processing.video.*;
 
 PImage img; 
 PGraphics pg;
+PFont f;
 
 HScrollbar bar1, bar2;
 
@@ -53,7 +54,7 @@ int[] hist;
 void setup() {
   size(1200, 500);
   background(back);
-  PFont f = createFont("Arial", 30);
+  f = createFont("Arial", 30);
   
   
   //load an image
@@ -65,18 +66,7 @@ void setup() {
   video = new Movie(this, "4.mp4");
   video.loop();
 
-  //creating rectangles for buttons
-  stroke(0);
-  fill(0);
-  rect(450, 350, button_w, button_h);
-  rect(450 + button_w + padding, 350 , button_w, button_h);
-
-  //creating buttons labels
   
-  fill(255);
-  textFont(f);
-  text(image_label, 470, 390);
-  text(video_label, 480 + button_w + padding, 390);
   
   
   //Creating scrollbars, putting on position of luma image
@@ -92,7 +82,23 @@ void movieEvent(Movie m) {
 
 void draw() {
 
-  //verify(mouseX, mouseY);
+  clear();
+
+  background(back);
+
+  //creating rectangles for buttons
+  stroke(0);
+  fill(255);
+  rect(450, 350, button_w, button_h);
+  rect(450 + button_w + padding, 350 , button_w, button_h);
+
+  //creating buttons labels
+  
+  fill(0);
+  textFont(f);
+  text(image_label, 470, 390);
+  text(video_label, 480 + button_w + padding, 390);
+
 
    int initial_w = pos_i_x + i_width + padding;
    int initial_w_2 = pos_i_x + i_width * 2+ padding * 2;
@@ -112,7 +118,7 @@ void draw() {
   
   
   
-  // luma(initial_w, initial_h);
+  luma(initial_w, initial_h);
 
   convolution(initial_w_2, initial_h, matrix_3);
   updatePixels();
@@ -122,37 +128,38 @@ void draw() {
 
 
 
-  hist = histo_segmentation(initial_w, initial_h);
-   stroke(255);
-  for(int x = initial_w; x < i_width + initial_w; x += 2){
-   int x1 = int(map(x, initial_w, i_width + initial_w, 0, 255));
-   int y1 = int(map(hist[x1], 0, max(hist), i_heigth, 0));
+  // hist = histo_segmentation(initial_w, initial_h);
+//   hist = histogram(initial_w, initial_h);
+//    stroke(255);
+//   for(int x = initial_w; x < i_width + initial_w; x += 2){
+//    int x1 = int(map(x, initial_w, i_width + initial_w, 0, 255));
+//    int y1 = int(map(hist[x1], 0, max(hist), i_heigth, 0));
    
-   line(x, i_heigth + pos_i_y, x, y1);
+//    line(x, i_heigth + pos_i_y, x, y1);
     
-  }
+//   }
 
 
-  hist = histogram(initial_w_2, initial_h);
- stroke(255);
-  for(int x = initial_w_2; x < i_width + initial_w_2; x += 2){
-   int x1 = int(map(x, initial_w_2, i_width + initial_w_2, 0, 255));
-   int y1 = int(map(hist[x1], 0, max(hist), i_heigth, 0));
+//   hist = histogram(initial_w_2, initial_h);
+//  stroke(255);
+//   for(int x = initial_w_2; x < i_width + initial_w_2; x += 2){
+//    int x1 = int(map(x, initial_w_2, i_width + initial_w_2, 0, 255));
+//    int y1 = int(map(hist[x1], 0, max(hist), i_heigth, 0));
    
-   line(x, i_heigth + pos_i_y, x, y1);
+//    line(x, i_heigth + pos_i_y, x, y1);
     
-  }
+//   }
 
 
-  hist = histogram(initial_w_3, initial_h);
- stroke(255);
-  for(int x = initial_w_3; x < i_width + initial_w_3; x += 2){
-   int x1 = int(map(x, initial_w_3, i_width + initial_w_3, 0, 255));
-   int y1 = int(map(hist[x1], 0, max(hist), i_heigth, 0));
+//   hist = histogram(initial_w_3, initial_h);
+//  stroke(255);
+//   for(int x = initial_w_3; x < i_width + initial_w_3; x += 2){
+//    int x1 = int(map(x, initial_w_3, i_width + initial_w_3, 0, 255));
+//    int y1 = int(map(hist[x1], 0, max(hist), i_heigth, 0));
    
-   line(x, i_heigth + pos_i_y, x, y1);
+//    line(x, i_heigth + pos_i_y, x, y1);
     
-  }
+//   }
 
   bar1.update();
   bar2.update();
@@ -181,8 +188,9 @@ void draw() {
   String frtxt = "Efficiency "+ frameRate/fr*100 + "%";
   text(frtxt, 90, 450);
   fill(back);
-  rect(90, 450, 200, 50);
-  delay(100);
+  
+
+  //  background(back);
   
   }
   
@@ -216,8 +224,8 @@ int[] histo_segmentation(int initial_w, int initial_h){
   float bar_pos_1 = bar1.getPos()- i_width/2;
   
   float bar_pos_2 = bar2.getPos()- i_width/2; 
-  float min= map(bar_pos_1, pos_i_x + i_width + padding, pos_i_x + i_width + padding + i_width, 0, 255); 
-  float max= map(bar_pos_2, pos_i_x + i_width + padding, pos_i_x + i_width + padding + i_width, 0, 255); 
+  float min= map(bar_pos_1, pos_i_x + i_width + padding - 10, pos_i_x + i_width + padding + i_width + 10, 0, 255); 
+  float max= map(bar_pos_2, pos_i_x + i_width + padding - 10, pos_i_x + i_width + padding + i_width + 10, 0, 255); 
   // println("min: "+min);
   // println("max: "+max);
   int[] hist = new int[256];
