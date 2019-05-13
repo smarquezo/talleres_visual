@@ -1,9 +1,11 @@
 int illusions = 7;
 int actual = 1;
+int r = 0;
 
 void setup(){
   size(600,600);
   frameRate(60);
+  r = 0;
 }
 
 void draw(){
@@ -208,5 +210,40 @@ void sigma_motion(){
 
 //Benham Illusion //////////////////////////////////////////////////////////////////
 void benhamIllusion(){
-  
+
+  translate(300,300);
+  rotate(radians(r));
+  fill(255);
+  arc(0,0,300,300,0,2*PI);
+  fill(0);
+  arc(0,0, 300, 300, PI, 2*PI);
+  noFill();
+  strokeWeight(3);
+  arc(0, 0, 285, 285, PI* 0.25 * 3, PI);
+  arc(0, 0, 270, 270, PI* 0.25 * 3, PI);
+  arc(0, 0, 255, 255, PI* 0.25 * 3, PI);
+
+  arc(0, 0 , 230 , 230 , PI*0.25*2 ,PI* 0.25 * 3);
+  arc(0, 0 , 215 , 215 , PI*0.25*2 ,PI* 0.25 * 3);
+  arc(0, 0 , 200 , 200 , PI*0.25*2 ,PI* 0.25 * 3);
+
+  arc(0, 0 , 185 , 185 , PI*0.25, PI* 0.25 * 2);
+  arc(0, 0 , 170 , 170 , PI*0.25 ,PI* 0.25 * 2);
+  arc(0, 0 , 155 , 155 , PI*0.25 ,PI* 0.25 * 2);
+
+  arc(0, 0 , 130 , 130 , 0 , PI*0.25);
+  arc(0, 0 , 115 , 115 , 0 , PI*0.25);
+  arc(0, 0 , 100 , 100 , 0 , PI*0.25);
+
+  stroke(0, 0, 255);
+  line(2, 2, -2, -2);
+  line(-2 , 2, 2 , -2);
+
+
+
+
+
+ 
+  r = r + 8;
+
 }
