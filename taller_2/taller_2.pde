@@ -1,6 +1,7 @@
 int illusions = 8;
 int actual = 1;
 int r = 0;
+int aux = 0;
 HScrollbar hs1;
 
 void setup(){
@@ -62,6 +63,25 @@ void keyPressed() {
     actual=2;
   }else if (actual ==0){
     actual=8;
+  }
+  if (actual == 7) {
+    
+    if(key == CODED){
+      if (keyCode == UP) {
+        r = r + aux;
+        aux += 1;
+      }
+      else if (keyCode == DOWN){
+        r = r  -aux;
+        aux -=  1;
+      }
+    }
+  }
+}
+
+void mousePressed(){
+  if (actual == 7) {
+    r = 0;
   }
 }
 
@@ -299,10 +319,6 @@ void benhamIllusion(){
 
 
 
-
-
-
-  r = r + 8;
 
 }
 
