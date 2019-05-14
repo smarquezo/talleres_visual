@@ -29,7 +29,7 @@ Complete la tabla:
 |    Hering Illusion     | Psicologica | https://michaelbach.de/ot/ang-hering/index.html |                                    |                             |
 | Penrose Triangle | Ilusiones paradógicas | https://www.illusionsindex.org/i/impossible-triangle |                                    |                             |
 | Munker Illusion | Psicologicas | https://michaelbach.de/ot/col-Munker/index.html | Scrollbar |                             |
-| Benham's Top Colours | Movimiento | https://michaelbach.de/ot/col-Benham/index.html |                                    |                             |
+| Benham's Top Colours | Movimiento | https://michaelbach.de/ot/col-Benham/index.html | Mouse y teclas arriba y abajo |                             |
 | Sigma Motion         | Movimiento              | https://www.youtube.com/watch?v=taz18wWSxN4          |                                    |                             |
 
 2. Escriba brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar
